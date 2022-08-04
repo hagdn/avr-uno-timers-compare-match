@@ -1,10 +1,6 @@
 # AVR - Arduino Uno: Normal mode with interrupt as timer interval indicator
-A code demonstrating the use of timers. In this code a 16-bit timer, Timer 1, is used to turn the built-in LED ON and OFF at precise time intervals.
-
-```diff
-- Incoming detailed notes and code
-```
-
+A code demonstrating the use of timers operating in Normal mode, to indicate timer intervales/period as well as
+to continue oscillation, an interrupt is used.
 
 ## Concept and Formula derivation
 The system clock (16MHz) completes a cycle which is the period
@@ -49,4 +45,38 @@ if the period is 1-sec. So to get the factor,
 factor = timer_bit - S
 ```
 We then equate that factor to TCNT1 so that it will
-start counting from that value instead of from 0
+start counting from that value instead of from 0.
+
+An interrupt would then be triggered everytime the Counter, TCNT1 reaches
+the maximum value. This can be implemented by enabling bit TOIE1 in TIMSK1.
+
+```diff
+- NOTE THAT LED WOULD BLINK EVERY OTHER SECOND INSTEAD OF PER-SECOND
+```
+This because of the characteristics of the waveform (sawtooth).
+It is better understood by taking a clock clock with you and observe
+the seconds value on the clock as the LED turns ON and OFF.
+
+Another thing to note is after every interrupt trigger, we set the counter
+value back to the factor we defined (TCINT1 = factor;), so that the counter
+would begin counting again from starting value to max value and then trigger
+the interrupt again and so on.
+
+##  How to upload the code:
+### A. Through Arduino IDE
+       1. Copy main.c content as text
+       2. Paste it to an empty Arduino sketch
+       3. Connect Arduino-Uno through USB
+       4. Upload code through the button
+    
+       
+### B. Command line
+       1. Make sure you have AVR-GCC toolchain installed, this include GNU-Make and AVRDude.
+       2. The only files you are going to need for this method are "main.c" and "Makefile"
+       3. Simply open CMD or terminal with its directory set to the location in which you
+          have both of those files in.
+       4. Type "make" as a command without the quotes.
+       5. Makefile automates the process.
+
+
+
