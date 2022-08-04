@@ -1,6 +1,11 @@
 # AVR - Arduino Uno: Timers in Compare Match Mode
 A code demonstrating the use of timers. In this code a 16-bit timer, Timer 1, is used to turn the built-in LED ON and OFF at precise time intervals.
 
+```diff
+- Incoming detailed notes and code
+```
+
+
 ## Concept and Formula derivation
 The system clock (16MHz) completes a cycle which is the period
 T = 1/f = 1/16MHz = 6.25E-8 sec or every 6.25-ns.
