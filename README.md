@@ -1,4 +1,4 @@
-# AVR - Arduino Uno: Timers in Compare Match Mode
+# AVR - Arduino Uno: Normal mode with interrupt as timer interval indicator
 A code demonstrating the use of timers. In this code a 16-bit timer, Timer 1, is used to turn the built-in LED ON and OFF at precise time intervals.
 
 ```diff
