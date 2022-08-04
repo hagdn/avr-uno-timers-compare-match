@@ -53,8 +53,8 @@ the maximum value. This can be implemented by enabling bit TOIE1 in TIMSK1.
 ```diff
 - NOTE THAT LED WOULD BLINK EVERY OTHER SECOND INSTEAD OF PER-SECOND
 ```
-This because of the characteristics of the waveform (sawtooth).
-It is better understood by taking a clock clock with you and observe
+This is because of the characteristics of the waveform (sawtooth).
+It is better understood by taking a clock with you and observe
 the seconds value on the clock as the LED turns ON and OFF.
 
 Another thing to note is after every interrupt trigger, we set the counter
